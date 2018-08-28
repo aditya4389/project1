@@ -17,11 +17,34 @@ int main()
 	do
 	{
 	cout<<"Select an option from the following to continue\n";
-	cout<<" 1) Insert 2) Exit\n";
+	cout<<" 1) List 2)Insert 3) Exit\n";
 	cin>>choice;
+	int count=0,sno=1;;
 		switch(choice)
-		{	
-			case 1: { 
+		{	case 1: {
+						std::string item_name;
+						std::ifstream nameFileout;
+
+						nameFileout.open("input.txt");
+						while (nameFileout >> item_name)
+						{
+							if(count==0)
+							{
+								cout<<"The product number is: "<<sno;
+								cout<<"\n";
+							}
+    						std::cout << item_name<<" ";
+    						count++;
+    						if(count==6)
+    						{
+    							count==0;
+    							sno++;
+							}
+						}
+nameFileout.close();
+			break;
+		}
+			case 2: { 
 			vector<string> ecom;
 			cout<<"Enter the following details to complete the process of adding your product into the list\n";
 			cout<<"Enter the Product Name:  ";
@@ -43,7 +66,7 @@ int main()
 			cin>>expiry_date;
 			ecom.push_back(expiry_date);
 			
-			std::ofstream output_file("./input.txt");
+			std::ofstream output_file("./input.txt",ios::app);
     		std::ostream_iterator<std::string> output_iterator(output_file, "\n");
     		std::copy(ecom.begin(), ecom.end(), output_iterator);
 			
@@ -51,7 +74,7 @@ int main()
 			cout<<"\nThank you for storing your product at AmazeCart.\n";
 				break;
 			}
-			case 2:{
+			case 3:{
 				break;
 			}
 	    	default:{
@@ -59,7 +82,7 @@ int main()
 				break;
 			}
 		}
-	}while(choice!=2);
+	}while(choice!=3);
 	cout<<"Thank You, you've been exited\n";
 	
 	return 0;
