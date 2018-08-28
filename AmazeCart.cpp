@@ -19,7 +19,7 @@ int main()
 	cout<<"Select an option from the following to continue\n";
 	cout<<" 1) List 2)Insert 3) Exit\n";
 	cin>>choice;
-	int count=0,sno=1;;
+//	int count=0,sno=1;
 		switch(choice)
 		{	case 1: {
 						std::string item_name;
@@ -28,18 +28,10 @@ int main()
 						nameFileout.open("input.txt");
 						while (nameFileout >> item_name)
 						{
-							if(count==0)
-							{
-								cout<<"\nThe product number is: "<<sno;
-								cout<<"\n";
-							}
+							
     						std::cout << item_name<<"\n";
-    						count++;
-    						if(count==6)
-    						{
-    							count==0;
-    							sno++;
-							}
+    						
+							
 						}
 nameFileout.close();
 			break;
